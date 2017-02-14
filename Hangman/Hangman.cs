@@ -15,9 +15,15 @@ namespace Hangman
         
         public Hangman()
         {
-            // take a random word
-            // todo
-            _word = "gerwin".ToLower();
+            // download a wordslist
+            string wordstring = new System.Net.WebClient().DownloadString("https://raw.githubusercontent.com/Tom25/Hangman/master/wordlist.txt");
+            string[] words = wordstring.Split('\n');
+
+            // generate a random index
+            int randomWord = new Random().Next(0, words.Length);
+
+            // select the random word
+            _word = words[randomWord]; // "gerwin".ToLower();
             _guessed = new List<char>();
 
             // set guessed word to underscores
