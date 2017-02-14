@@ -47,7 +47,7 @@ namespace Hangman
             }
             else
             {
-                Console.WriteLine("You're out of lives!");
+                Console.WriteLine("You're out of lives, the correct word was {0}.", game.GetWord());
             }
 
             Console.ReadLine();

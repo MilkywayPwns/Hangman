@@ -58,6 +58,11 @@ namespace Hangman
             return false;
         }
 
+        public string GetWord()
+        {
+            return _word;
+        }
+
         public bool GuessWord(string word)
         {
             // if input is equal to word
@@ -111,6 +116,7 @@ namespace Hangman
                 result = true;
             }
 
+            Console.WriteLine("Guesses left: {0}", _movesleft);
             Console.WriteLine("Word: {0}", _guessedword);
 
             if (!result)
