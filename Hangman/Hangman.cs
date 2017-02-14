@@ -17,45 +17,54 @@ namespace Hangman
         {
             // take a random word
             // todo
-            _word = "gerwin";
+            _word = "gerwin".ToLower();
             _guessed = new List<char>();
 
             // set guessed word to underscores
             for (int i = 0; i < _word.Length; i++)
+            {
                 _guessedword += "_";
+            }
 
             // by default, the player gets 11 tries.
             _movesleft = 11;
         }
 
-        public int WordSize()
-        {
-            return _word.Length;
-        }
-
         public bool MovesLeft()
         {
+            // if we won, return false
             if (!_guessedword.Contains('_'))
+            {
                 return false;
+            }
 
             return _movesleft >= 1;
         }
 
         public bool Won()
         {
+            // if we won, return true
             if (!_guessedword.Contains('_'))
+            {
                 return true;
+            }
 
             return false;
         }
 
         public bool GuessWord(string word)
         {
+            // if input is equal to word
             if (_word == word)
             {
+                _guessedword = word;
                 return true;
             }
 
+            // decrement guesses left
+            _movesleft -= 1;
+
+            // return false (word incorrect)
             return false;
         }
 
@@ -82,6 +91,7 @@ namespace Hangman
 
                 for (int i = 0; i < _word.Length; i++)
                 {
+                    // set character index if equals
                     if (_word[i] == character)
                     {
                         _tmp[i] = character;

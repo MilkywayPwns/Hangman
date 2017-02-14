@@ -13,20 +13,31 @@ namespace Hangman
         {
             while (game.MovesLeft())
             {
-                Console.Write("Guess a letter: ");
-                string input = Console.ReadLine();
+                Console.Write("Guess a letter/word: ");
+                string input = Console.ReadLine().ToLower();
 
                 if (input.Length >= 2)
                 {
                     // wordguessing is todo
-                    // Console.WriteLine("");
+                    if (game.GuessWord(input))
+                    {
+                        Console.WriteLine("Correct!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong!");
+                    }
                 }
                 else if (input.Length == 1)
                 {
                     if (game.Guess(input[0]))
+                    {
                         Console.WriteLine("Correct!");
+                    }
                     else
+                    {
                         Console.WriteLine("Wrong!");
+                    }
                 }
             }
 
