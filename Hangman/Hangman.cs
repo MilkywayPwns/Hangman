@@ -106,7 +106,11 @@ namespace Hangman
             }
 
             Console.WriteLine("Word: {0}", _guessedword);
-            _movesleft -= 1;
+
+            if (!result)
+            {
+                _movesleft -= 1;
+            }
 
             // return false (incorrect guess)
             return result;
